@@ -1,0 +1,61 @@
+.page-logo{
+    float: left;
+    width: 40%;
+    text-align: right;
+    padding-right: 20px;
+}
+
+.page-head{
+    color: #fff;
+    float: left;
+    width: 50%;
+    text-align: left;
+}
+
+.form{
+    padding-top: 80px;
+    display: table;
+}
+
+label{
+    color: white;
+    font-size: 1.4em;
+}
+
+input{
+    padding: 8px 10px;
+    margin: 8px 15px;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+input:focus{
+    border: 3px solid #f84;
+    font-size: 1em;
+}
+
+select{
+    padding: 16px 20px;
+    margin: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+}
+
+button{
+    padding: 10px 20px;
+    margin: 8px 150px;
+    border: none;
+    border-radius: 4px;
+    background-color: #fff;
+    color: black;
+    font-size: 1em;
+}
+
+button:hover{
+    background-color: #000;
+    color: white;
+}
