@@ -17,6 +17,10 @@
     display: table;
 }
 
+#mandatory{
+	color: red;
+}
+
 label{
     color: white;
     font-size: 1.4em;

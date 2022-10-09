@@ -22,40 +22,37 @@
         <form>
             <table>
                 <tr>
-                    <td><label>Name:</label></td>
-                    <td><input type="text" placeholder="Enter your name"></td>
+                    <td><label><span id="mandatory">*</span>Name:</label></td>
+                    <td><input type="text" placeholder="Enter your name" required></td>
                 </tr>
                 <tr>
-                    <td><label>Email:</label></td>
-                    <td><input type="text" placeholder="Enter email id"></td>
-                </tr>
-                <tr>
-                    <td><label>Mobile:</label></td>
-                    <td><input type="tel" placeholder="Enter your mobile"></td>
-                </tr>
-                <tr>
-                    <td><label>City:</label></td>
-                    <td><input type="text" placeholder="Enter city name"></td>
-                </tr>
-                <tr>
-                    <td><label>State:</label></td>
-                    <td><input type="text" placeholder="Enter state name"></td>
-                </tr>
-                <tr>
-                    <td><label>Country:</label></td>
+                    <td><label><span id="mandatory">*</span>Qualification:</label></td>
                     <td>
                         <select>
-                            <option>Select a country</option>
-                            <option>Australia</option>
-                            <option>China</option>
-                            <option>India</option>
-                            <option>USA</option>
+							<option>Select your qualification</option>
+							<option>Primary Education</option>
+                            <option>Secondary Education</option>
+                            <option>Bachelor's Degree</option>
+                            <option>Master's Degree</option>
+                            <option>Others</option>
                         </select>
                     </td>
                 </tr>
+				<tr>
+                    <td><label>If Others, Specify your qualification:</label></td>
+                    <td><input type="text" placeholder="Others Qualification"></td>
+                </tr>
+				<tr>
+                    <td><label><span id="mandatory">*</span>Age:</label></td>
+                    <td><input type="number" placeholder="Enter your age" required></td>
+                </tr>
+				<tr>
+                    <td><label><span id="mandatory">*</span>Email:</label></td>
+                    <td><input type="email" placeholder="Enter email id" required></td>
+                </tr>
                 <tr>
                     <td></td>
-                    <td><button>Register</button></td>
+                    <td><button>Submit</button></td>
                 </tr>
             </table>
         </form>
