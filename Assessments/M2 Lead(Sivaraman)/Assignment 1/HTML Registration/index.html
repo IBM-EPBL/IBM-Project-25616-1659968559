@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <script>
+        function storeValues(){
+            var name=document.getElementById("username").value;
+            localStorage.setItem("username", name);
+            var email=document.getElementById("email").value;
+            localStorage.setItem("email", email);
+            var phno=document.getElementById("phno").value;
+            localStorage.setItem("phno", phno);
+        }
+    </script>
+</head>
+
+<body background="images/background.jpg">
+    <div class="heading">
+        <div class="page-logo">
+            <img src="images/register.png" height="100px" width="100px" />
+        </div>
+        <div class="page-head">
+            <h1>Registration Form</h1>
+        </div>
+    </div>
+    <div class="form">
+        <form action="success.html" method="POST">
+            <table>
+                <tr>
+                    <td><label>Username:</label></td>
+                    <td><input type="text" id="username" name="username" placeholder="Enter your username" required></td>
+                </tr>
+				<tr>
+                    <td><label>Email:</label></td>
+                    <td><input type="email" id="email" placeholder="Enter email id" required></td>
+                </tr>
+				<tr>
+                    <td><label>Phone Number:</label></td>
+                    <td><input type="number" id="phno" placeholder="Enter your phone number" required></td>
+                </tr>
+                <tr>
+                    <td><input type="reset" id="button" value="Reset"></td>
+                    <td><input type="submit" onclick="storeValues()" id="button" value="Submit"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+
+</html>

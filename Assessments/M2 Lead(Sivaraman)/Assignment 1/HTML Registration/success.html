@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success Page</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body background="images/background.jpg">
+    <div class="heading">
+        <div class="page-logo">
+            <img src="images/register.png" height="100px" width="100px" />
+        </div>
+        <div class="page-head">
+            <h1>Success Page</h1>
+        </div>
+    </div>
+    <div class="form">
+        <table>
+            <tr>
+                <td><label>Username:</label></td>
+                <td><label id="username"></label></td>
+            </tr>
+            <tr>
+                <td><label>Email:</label></td>
+                <td><label id="email"></label></td>
+            </tr>
+            <tr>
+                <td><label>Phone Number:</label></td>
+                <td><label id="phno"></label></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        var name = localStorage.getItem("username");
+        var email = localStorage.getItem("email");
+        var phno = localStorage.getItem("phno");
+        document.getElementById("username").innerHTML=name;
+        document.getElementById("email").innerHTML=email;
+        document.getElementById("phno").innerHTML=phno;
+    </script>
+</body>
+
+</html>
