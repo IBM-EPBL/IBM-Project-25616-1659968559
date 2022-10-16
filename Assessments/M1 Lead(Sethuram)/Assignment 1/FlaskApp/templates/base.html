@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %} - FlaskApp</title>
+    <style>
+        body{
+            background-color: #121212;
+            color: white;
+        }
+        nav{
+            background-color: grey;
+        }
+        nav a {
+            color:aqua;
+            font-size: 2em;
+            margin-left: 10px;
+            text-decoration: none;
+        }
+        nav a:hover{
+            background-color: tomato;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+    </nav>
+    <hr>
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
+</body>
+</html>

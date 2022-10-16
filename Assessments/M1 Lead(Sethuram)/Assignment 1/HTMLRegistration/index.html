@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration Page</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <form method="post" action="next_page.html">
+        <h2>Registration form</h2>
+        <label>Username:</label>
+        <input id="username" type="text" placeholder="Sethuram">
+        <br>
+        <label>Email:</label>
+        <input id="email" type="text" placeholder="sethu@gmail.com">
+        <br>
+        <label>Phone number:</label>
+        <input id="phone_number" type="tel" placeholder="1111111111">
+        <br>
+        <input onclick="storeValues()" type="submit" value="Register">
+    </form>
+
+    <script>
+        const storeValues = () => {
+            let username = document.getElementById('username').value;
+            let email = document.getElementById('email').value;
+            let phone_number = document.getElementById('phone_number').value;
+            localStorage.setItem('username', username);
+            localStorage.setItem('email', email);
+            localStorage.setItem('phone_number', phone_number);
+        }
+    </script>
+</body>
+</html>
