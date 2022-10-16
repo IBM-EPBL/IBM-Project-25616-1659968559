@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{title}}
+{% endblock title %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="heading">
+        <div class="page-logo">
+            <img src="../static/form_icon.png" height="100px" width="100px" />
+        </div>
+        <div class="page-head">
+            <h1>Sign Up</h1>
+        </div>
+    </div>
+    <div class="form">
+        <form method="POST">
+            <table>
+                <tr>
+                    <td><label>Username:</label></td>
+                    <td><input type="text" name="username" id="username" placeholder="Enter your username" required></td>
+                </tr>
+                <tr>
+                    <td><label>Roll No:</label></td>
+                    <td><input type="text" name="rollno" id="rollno" placeholder="Enter your roll no" required></td>
+                </tr>
+				<tr>
+                    <td><label>Email:</label></td>
+                    <td><input type="email" name="email" id="email" placeholder="Enter your email id" required></td>
+                </tr>
+				<tr>
+                    <td><label>Password:</label></td>
+                    <td><input type="password" name="password" id="password" placeholder="Enter your password" required></td>
+                </tr>
+                <tr>
+                    <td><input type="reset" id="button" value="Reset"></td>
+                    <td><input type="submit" id="button" value="Submit"></td>
+                </tr>
+                <tr>
+                    <td><label>Adready Existing User?</label></td>
+                    <td><label><a href="signin" style="color:yellow;">Sign In</a></label></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+
+</html>
+{% endblock content %}
