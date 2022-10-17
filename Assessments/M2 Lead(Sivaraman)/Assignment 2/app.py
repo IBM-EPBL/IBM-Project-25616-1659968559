@@ -1,25 +1,12 @@
 from flask import Flask, render_template, url_for, request, flash
-import sqlite3  
+import ibm_db  
   
 app = Flask(__name__)
 app.secret_key = "121212"
 
 def connectDB():
-    conn = sqlite3.connect('users.db')  
-    #Create a user table with email, username, rollno, password
-    create_table = """
-    CREATE TABLE IF NOT EXISTS users(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        email TEXT NOT NULL,
-        username TEXT NOT NULL,
-        rollno TEXT NOT NULL,
-        password TEXT NOT NULL
-    );
-    """
-    conn.executescript(create_table)
-    conn.row_factory = sqlite3.Row
+    conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=fbd88901-ebdb-4a4f-a32e-9822b9fb237b.c1ogj3sd0tgtu0lqde00.databases.appdomain.cloud;PORT=32731;SECURITY=SSL;SSLServerCertificate=DigiCertGlobalRootCA.crt;UID=glr36049;PWD=dcAymdrrrHG3zGIs;", "", "")
     return conn
-
 
 @app.route("/")
 def root():
@@ -31,18 +18,17 @@ def signin():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-        userDB = connectDB()
-        findUser = userDB.execute(
-            'SELECT username FROM users WHERE password = ? AND email = ?', (password, email)
-        ).fetchone()
         
-        if findUser is None:
+        userDB = connectDB()
+        sql = "SELECT username FROM users WHERE password = '{0}' AND email = '{1}'".format(password, email)
+        stmt = ibm_db.exec_immediate(userDB, sql)
+        findUser = ibm_db.fetch_assoc(stmt)
+        if findUser == False:
             error = "Incorrect Username/Password."
   
         if error is None:
             return render_template('home.html', title="Home", success="Login Successful")
         flash(error)
-        userDB.close()
 
     return render_template('signin.html', title='Sign In', error=error)
 
@@ -54,15 +40,9 @@ def signup():
         password = request.form['password']
         rollno = request.form['username']
         
-        db = connectDB()
-        curr = db.cursor()
-        
-        curr.execute(
-            'INSERT INTO users (email, username, rollno, password) VALUES (?, ?, ?, ?);', (email, username, rollno, password)
-        )
-        db.commit()
-        curr.close()
-        db.close()
+        userDB = connectDB()
+        sql = "INSERT INTO users (email, username, rollno, password) VALUES ('{0}', '{1}', '{2}', '{3}');".format(email, username, rollno, password)
+        ibm_db.exec_immediate(userDB, sql)
         return render_template('home.html', title="Home", success="Registration Successful")
 
     return render_template("signup.html", title="Sign Up")
