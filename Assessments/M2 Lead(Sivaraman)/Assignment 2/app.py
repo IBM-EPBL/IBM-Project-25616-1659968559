@@ -5,7 +5,8 @@ app = Flask(__name__)
 app.secret_key = "121212"
 
 def connectDB():
-    conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=fbd88901-ebdb-4a4f-a32e-9822b9fb237b.c1ogj3sd0tgtu0lqde00.databases.appdomain.cloud;PORT=32731;SECURITY=SSL;SSLServerCertificate=DigiCertGlobalRootCA.crt;UID=glr36049;PWD=dcAymdrrrHG3zGIs;", "", "")
+    #Enter your IBM DB2 credentials here
+    conn=ibm_db.connect("DATABASE=;HOSTNAME=;PORT=;SECURITY=;SSLServerCertificate=;UID=;PWD=;", "", "")
     return conn
 
 @app.route("/")
@@ -27,6 +28,7 @@ def signin():
             error = "Incorrect Username/Password."
   
         if error is None:
+            success = "Hey " + findUser['username']
             return render_template('home.html', title="Home", success="Login Successful")
         flash(error)
 
@@ -38,7 +40,7 @@ def signup():
         username = request.form['username']
         email = request.form['email']
         password = request.form['password']
-        rollno = request.form['username']
+        rollno = request.form['rollno']
         
         userDB = connectDB()
         sql = "INSERT INTO users (email, username, rollno, password) VALUES ('{0}', '{1}', '{2}', '{3}');".format(email, username, rollno, password)
