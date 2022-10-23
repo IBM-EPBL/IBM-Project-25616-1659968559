@@ -4,9 +4,22 @@ import ibm_db
 app = Flask(__name__)
 app.secret_key = "121212"
 
+"""
+Create Table 'Users' in IBM Cloud DB2 using following SQL query:
+---------------------------------------------------------------------------
+CREATE TABLE USERS(
+	id INTEGER GENERATED ALWAYS AS IDENTITY (START WITH 1 INCREMENT BY 1),
+	email VARCHAR(30) NOT NULL,
+	username VARCHAR(20) NOT NULL,
+	rollno VARCHAR(10) NOT NULL,
+	password VARCHAR(30) NOT NULL,
+	PRIMARY KEY(id)
+);
+"""
+
 def connectDB():
     #Enter your IBM DB2 credentials here
-    conn=ibm_db.connect("DATABASE=;HOSTNAME=;PORT=;SECURITY=;SSLServerCertificate=;UID=;PWD=;", "", "")
+    conn=ibm_db.connect("DATABASE=;HOSTNAME=;PORT=;SECURITY=SSL;SSLServerCertificate=DigiCertGlobalRootCA.crt;UID=;PWD=;","","")
     return conn
 
 @app.route("/")
@@ -24,12 +37,16 @@ def signin():
         sql = "SELECT username FROM users WHERE password = '{0}' AND email = '{1}'".format(password, email)
         stmt = ibm_db.exec_immediate(userDB, sql)
         findUser = ibm_db.fetch_assoc(stmt)
+
         if findUser == False:
             error = "Incorrect Username/Password."
-  
+        
+        while findUser != False:
+            success = "Hey " + findUser["USERNAME"]
+            findUser = ibm_db.fetch_assoc(stmt)
+
         if error is None:
-            success = "Hey " + findUser['username']
-            return render_template('home.html', title="Home", success="Login Successful")
+            return render_template('home.html', title="Home", success=success)
         flash(error)
 
     return render_template('signin.html', title='Sign In', error=error)
