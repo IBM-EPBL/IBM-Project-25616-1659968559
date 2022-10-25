@@ -1,0 +1,9 @@
+.form{
+    padding-top: 80px;
+    display: table;
+}
+
+label{
+    color: #e1e1e1;
+    font-size: 1.4em;
+}
