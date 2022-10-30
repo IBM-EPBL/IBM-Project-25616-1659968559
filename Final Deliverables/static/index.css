@@ -1,0 +1,67 @@
+
+
+.page-logo{
+    float: left;
+    width: 40%;
+    text-align: right;
+    padding-right: 20px;
+}
+
+.page-head{
+    color: #e1e1e1;
+    float: left;
+    width: 50%;
+    text-align: left;
+}
+
+.form{
+    padding-top: 80px;
+    display: table;
+}
+
+label{
+    color: #e1e1e1;
+    font-size: 1.4em;
+}
+
+.menu{
+    font-size: 1.4em;
+}
+
+li:hover{
+    background-color: aquamarine;
+}
+
+.navbar{
+    background-color: #e1e1e1;
+}
+
+input{
+    padding: 8px 10px;
+    margin: 8px 15px;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    border-radius: 10px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+input:focus{
+    border: 3px solid #f84; 
+}
+
+#button{
+    padding: 8px 10px;
+    margin: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #e1e1e1;
+    color: black;
+    font-size: 1.3em;
+}
+
+#button:hover{
+    background-color: #000;
+    color: #e1e1e1;
+}
