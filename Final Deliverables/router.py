@@ -1,5 +1,5 @@
 from app import app
-from flask import request,jsonify,render_template
+from flask import request,jsonify,render_template,flash
 import ibm_db
 
 def connectDB():
@@ -26,7 +26,6 @@ def signin():
             error = "Incorrect Username/Password."
 
         if error is None:
-            success = "Hey " + findUser['username']
             return render_template('home.html', title="Home", success="Login Successful")
         flash(error)
 
