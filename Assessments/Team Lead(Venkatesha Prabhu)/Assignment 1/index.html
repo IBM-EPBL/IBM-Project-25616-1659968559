@@ -16,17 +16,17 @@
                 <button type="button" class="toggle-btn" onclick="register()">Register</button>
             </div>
             <div id="login"class="input-group">
-                <input type="text" class="input-field" placeholder="User Name" required>
-                <input type="text" class="input-field" placeholder="Password" required>
-                <input type="checkbox" class="check-box" required><span>Remember Me</span>
-                <button type="submit" class="submit-btn">Log In</button>
+                <input id="logName" type="text" class="input-field" placeholder="UserName" required>
+                <input type="password" class="input-field" placeholder="Password" required>
+                <!-- <input type="checkbox" class="check-box" required><span>Remember Me</span> -->
+                <button type="submit" class="submit-btn" onclick="userLog()">Log In</button>
             </div>
             <div id="register" class="input-group">
-                <input type="text" class="input-field" placeholder="Name" required>
+                <input id ="regName" type="text" class="input-field" placeholder="UserName" required>
                 <input type="text" class="input-field" placeholder="Qualification" required>
                 <input type="number" class="input-field" placeholder="Age" required>
                 <input type="email" class="input-field" placeholder="Email" required>
-                <button type="submit" class="submit-btn">Register</button>
+                <button type="submit" class="submit-btn" onclick="userReg()">Register</button>
             </div>
         </div>
     </div>
