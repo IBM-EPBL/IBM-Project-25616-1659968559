@@ -3,7 +3,8 @@ from flask import request,jsonify,render_template,flash
 import ibm_db
 
 def connectDB():
-    conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=fbd88901-ebdb-4a4f-a32e-9822b9fb237b.c1ogj3sd0tgtu0lqde00.databases.appdomain.cloud;PORT=32731;SECURITY=SSL;SSLServerCertificate=DigiCertGlobalRootCA.crt;UID=glr36049;PWD=dcAymdrrrHG3zGIs;","","")
+    ##Enter your credentials
+    conn=None
     return conn
 
 @app.route("/")
