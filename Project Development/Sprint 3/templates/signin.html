@@ -19,7 +19,7 @@
             <img src="../static/form_icon.png" height="100px" width="100px" />
         </div>
         <div class="page-head">
-            <h1>Sign Up</h1>
+            <h1>Sign In</h1>
         </div>
     </div>
     <div class="form">
@@ -28,10 +28,6 @@
                 <label style="color:red;">{{error}}</label>
             {% endif %}
             <table>
-                <tr>
-                    <td><label>Username:</label></td>
-                    <td><input type="text" name="username" id="username" placeholder="Enter your username" required></td>
-                </tr>
 				<tr>
                     <td><label>Email:</label></td>
                     <td><input type="email" name="email" id="email" placeholder="Enter your email id" required></td>
@@ -45,12 +41,12 @@
                     <td><input type="submit" id="button" value="Submit"></td>
                 </tr>
                 <tr>
-                    <td><label>Adready Existing User?</label></td>
-                    <td><label><a href="signin" style="color:yellow;">Sign In</a></label></td>
+                    <td><label>New User?</label></td>
+                    <td><label><a href="signup" style="color:yellow;">Sign Up</a></label></td>
                 </tr>
             </table>
         </form>
-    </div>
+  </div>
 </body>
 
 </html>

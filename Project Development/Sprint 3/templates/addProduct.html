@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}
+    Add a Product
+{% endblock title %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="heading">
+        <div class="page-head">
+            <h1>Add a Product</h1>
+        </div>
+    </div>
+    <div class="form">
+        <form method="POST" style="margin-right:500px;">
+            {% if error %}
+                <label style="color:red;">{{error}}</label>
+            {% endif %}
+            <table>
+                <tr>
+                    <td><label>Product ID</label></td>
+                    <td><input type="text" name="pid" id="pid" placeholder="Enter Product ID" required></td>
+                </tr>
+                <tr>
+                    <td><label>Product Name</label></td>
+                    <td><input type="text" name="pname" id="pname" placeholder="Enter Product Name" required></td>
+                </tr>
+                <tr>
+                    <td><label>Stock Amount</label></td>
+                    <td><input type="number" name="stock" id="stock" placeholder="Enter Stock Amount" required></td>
+                </tr>
+                <tr>
+                    <td><label>Price/ Unit (in INR)</label></td>
+                    <td><input type="number" name="unitprice" id="unitprice" placeholder="Enter Price per Unit" required></td>
+                </tr>
+                <tr>
+                    <td><input type="reset" id="button" value="Reset"></td>
+                    <td><input type="submit" id="button" value="Add Product"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+
+</html>
+{% endblock content %}

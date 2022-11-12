@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}
+Dashboard
+{% endblock title %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="row heading">
+        <div class="page-head">
+            <h1>{{username}}'s Dashboard</h1>
+        </div>
+    </div>
+    <div class="row">
+        <h3 class="titles">Overall Inventory Value (in INR)</h3>
+        <h4 class="contents">Rs. {{overallValue}}</h4>
+    </div>
+    <hr style="color: white;">
+    <div class="row">
+        <h3 class="titles">Product-wise Inventory Value</h3>
+        <h4 class="contents">Rs. {{overallvalue}}</h4>
+    </div>
+    <div>
+        <form method="POST">
+            <input type="number" id="threshold" name="threshold" placeholder="15">
+            <input type="submit" value="Set Limit">
+        </form>
+    </div>
+</body>
+
+</html>
+{% endblock content %}
