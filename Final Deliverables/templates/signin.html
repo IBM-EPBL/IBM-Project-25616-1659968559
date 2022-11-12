@@ -11,42 +11,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/signin.css">
 </head>
 
 <body>
-    <div class="heading">
-        <div class="page-logo">
-            <img src="../static/form_icon.png" height="100px" width="100px" />
+    <form class="sign_in" method="POST">
+        {% if error %}
+            <label style="color:red;">{{error}}</label>
+        {% endif %}
+        <h1>Good to see you !</h1>
+        <h2>Welcome</h2>
+        <div class="form_input">
+            <div class="form-element">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="form-element">
+                <label for="userPass">Password</label>
+                <input type="password" name="password" id="password" placeholder="Password" required>
+            </div>
         </div>
-        <div class="page-head">
-            <h1>Sign In</h1>
+        <div class="btn_container">
+            <input type="reset" id="button" value="Reset">
+            <input type="submit" id="button" value="Submit">
         </div>
-    </div>
-    <div class="form">
-        <form method="POST">
-            {% if error %}
-                <label style="color:red;">{{error}}</label>
-            {% endif %}
-            <table>
-				<tr>
-                    <td><label>Email:</label></td>
-                    <td><input type="email" name="email" id="email" placeholder="Enter your email id" required></td>
-                </tr>
-				<tr>
-                    <td><label>Password:</label></td>
-                    <td><input type="password" name="password" id="password" placeholder="Enter your password" required></td>
-                </tr>
-                <tr>
-                    <td><input type="reset" id="button" value="Reset"></td>
-                    <td><input type="submit" id="button" value="Submit"></td>
-                </tr>
-                <tr>
-                    <td><label>New User?</label></td>
-                    <td><label><a href="signup" style="color:yellow;">Sign Up</a></label></td>
-                </tr>
-            </table>
-        </form>
-  </div>
+        <h3>New User ? <a href="signup">Register Here</a></h3>
+    </form>
 </body>
 
 </html>

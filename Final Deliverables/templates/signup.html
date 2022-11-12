@@ -11,47 +11,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/signin.css">
 </head>
 
 <body>
-    <div class="heading">
-        <div class="page-logo">
-            <img src="../static/form_icon.png" height="100px" width="100px" />
+    <form class="sign_up" method="POST">
+        {% if error %}
+            <label style="color:red;">{{error}}</label>
+        {% endif %}
+        <h1>Hello Friend !</h1>
+        <h2>Welcome to the ReStocker</h2>
+        <div class="form-element">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="Username" required>
         </div>
-        <div class="page-head">
-            <h1>Sign Up</h1>
+        <div class="form-element">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Email" required>
         </div>
-    </div>
-    <div class="form">
-        <form method="POST">
-            {% if error %}
-                <label style="color:red;">{{error}}</label>
-            {% endif %}
-            <table>
-                <tr>
-                    <td><label>Username:</label></td>
-                    <td><input type="text" name="username" id="username" placeholder="Enter your username" required></td>
-                </tr>
-				<tr>
-                    <td><label>Email:</label></td>
-                    <td><input type="email" name="email" id="email" placeholder="Enter your email id" required></td>
-                </tr>
-				<tr>
-                    <td><label>Password:</label></td>
-                    <td><input type="password" name="password" id="password" placeholder="Enter your password" required></td>
-                </tr>
-                <tr>
-                    <td><input type="reset" id="button" value="Reset"></td>
-                    <td><input type="submit" id="button" value="Submit"></td>
-                </tr>
-                <tr>
-                    <td><label>Adready Existing User?</label></td>
-                    <td><label><a href="signin" style="color:yellow;">Sign In</a></label></td>
-                </tr>
-            </table>
-        </form>
-    </div>
+        <div class="form-element">
+            <label for="userPass">Password</label>
+            <input type="password" name="password" id="password" placeholder="Password" required>
+        </div>
+        <div class="btn_container">
+            <input type="reset" id="button" value="Reset">
+            <input type="submit" id="button" value="Submit">
+        </div>
+        <h3>Existing User ? <a href="signin">Login Here</a></h3>
+    </form>
 </body>
 
 </html>
+
 {% endblock content %}

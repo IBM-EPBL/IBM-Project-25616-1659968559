@@ -38,6 +38,7 @@ def signin():
 
 @app.route("/signup", methods=('POST', 'GET'))
 def signup():
+    error=None
     if request.method == 'POST':
         username = request.form['username']
         email = request.form['email']
@@ -50,7 +51,7 @@ def signup():
             sql = "INSERT INTO users (email, username, password) VALUES ('{}', '{}', '{}');".format(email, username, password)
             ibm_db.exec_immediate(conn, sql)
             return render_template('home.html', title="Home", message="Registration Successful")
-    return render_template("signup.html", title="Sign Up", error="Username aldready exists.")
+    return render_template("signup.html", title="Sign Up", error=error)
 
 
 @app.route("/<username>/dashboard", methods=('POST', 'GET'))

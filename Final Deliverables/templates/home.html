@@ -1,32 +1,34 @@
 {% extends 'base.html' %}
 {% block title %}
-    {{title}}
+Home
 {% endblock title %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-
-<body>
-    <div class="form">
-        <h1>
-            <label>
-                {% if message %}
-                    <span style="color:green">{{message}}</span> <br>
-                {% endif %}
-                Hello There! <br>
-                Welcome to Smart Inventory <br>
-            </label>
-        </h1>
-        <img src="https://previews.123rf.com/images/jimbrow/jimbrow2102/jimbrow210200456/164245839-welcome-big-word-with-small-people-vector-illustration-concept-template-white-background-isolated-ca.jpg" height="300" width="600"/>
-  </div>
-</body>
-
-</html>
+<div class="grid_container">
+    <div class="desc_container">
+        <h1>ReStocker</h1>
+        <p>
+            We ensure you carry merchandise that shoppers want, with neither too little nor
+            too much on hand, by managing inventory, retailers meet customer demand without
+            running out of stock or carrying excess supply
+        </p>
+        <h4>New Here ? <button><a href="signup" style="text-decoration:none;">Sign Up</a></button></h4>
+    </div>
+    <div class="desc_image">
+        <img src="../static/inventory.png">
+    </div>
+    <div class="about_image">
+        <img src="../static/inventory2.png">
+    </div>
+    <div class="about_container">
+        <h2>About</h2>
+        <p>
+            Effective retail inventory management results in lower costs and a
+            better understanding of sales patterns. Retail inventory management
+            tools and methods give retailers more information on which to run their businesses.
+            Applications have been developed to help retailers track and manage stocks related
+            to their own products
+        </p>
+    </div>
+</div>
 {% endblock content %}
