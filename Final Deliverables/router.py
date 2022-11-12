@@ -65,13 +65,15 @@ def dashboard(username):
         products.append(productInfo['PRODUCTNAME'])
         prices.append(productInfo['UNITPRICE'] * productInfo['AVAILABLESTOCK'])
         productInfo = ibm_db.fetch_assoc(stmt)
+    
+    productsBelowThValue = getProductsBelowThValue(conn, session['email'], username)
 
     if request.method=='POST':
         th_value = request.form['threshold']
         sql = "INSERT INTO threshold_value (email, th_value) VALUES ('{}', '{}');".format(session['email'], th_value)
         ibm_db.exec_immediate(conn, sql)   
         return redirect(url_for('.dashboard', username=username))
-    return render_template("dashboard.html", username=username, success=True, overallValue=sum(prices))
+    return render_template("dashboard.html", username=username, success=True, overallValue=sum(prices), products=products, prices=prices, productsBelowThValue=productsBelowThValue)
 
 
 @app.route("/<username>/manageProducts", methods=('POST', 'GET'))
