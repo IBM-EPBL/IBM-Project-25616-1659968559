@@ -2,7 +2,7 @@ from app import app
 from flask import request, redirect, url_for, render_template, session
 import ibm_db
 import os
-from sendGrid import mailto, checkstatus
+from sendGrid import mailto, checkstatus, getProductsBelowThValue
 from dotenv import load_dotenv
 
 load_dotenv('.env')

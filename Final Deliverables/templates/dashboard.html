@@ -20,13 +20,20 @@ Dashboard
         </div>
     </div>
     <div class="row">
-        <h3 class="titles">Overall Inventory Value (in INR)</h3>
-        <h4 class="contents">Rs. {{overallValue}}</h4>
+        <h3 class="titles" style="color: white;">Overall Inventory Value (in INR)</h3>
+        <h4 class="contents" style="color: white;">Rs. {{overallValue}}</h4>
     </div>
     <hr style="color: white;">
     <div class="row">
         <h3 class="titles">Product-wise Inventory Value</h3>
         <h4 class="contents">Rs. {{overallvalue}}</h4>
+    </div>
+    <hr style="color: white;">
+    <div class="row">
+        <h3 class="titles" style="color: white;">Products Below Threshold Value</h3>
+        {% for item in productsBelowThValue %}
+        <h4 class="contents" style="color: white;">{{item}}</h4>
+        {% endfor %}
     </div>
     <div>
         <form method="POST">
