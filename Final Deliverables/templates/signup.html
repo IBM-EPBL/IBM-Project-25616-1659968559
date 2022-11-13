@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}
-    {{title}}
+    Sign Up
 {% endblock title %}
 
 {% block content %}
@@ -16,11 +16,11 @@
 
 <body>
     <form class="form" method="POST">
+        <h1>Hello Friend !</h1>
+        <h2>Welcome to the ReStocker</h2>
         {% if error %}
             <label style="color:red;">{{error}}</label>
         {% endif %}
-        <h1>Hello Friend !</h1>
-        <h2>Welcome to the ReStocker</h2>
         <div class="form-element">
             <label for="username">Username</label>
             <input type="text" name="username" id="username" placeholder="Username" required>

@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
-{% block title %}
-Manage Products
+{% extends 'base.html' %} 
+{% block title %} 
+    Manage Products 
 {% endblock title %}
 
 {% block content %}
@@ -8,79 +8,67 @@ Manage Products
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        input[type="number"] {
-            padding: 2px;
-            width: 80px;
-        }
-        input[type="image"] {
-            border:none;
-            padding: 0;
-            margin: 0;
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/productsM.css">
 </head>
 
 <body>
-    <div class="heading">
-        <div class="page-head">
-            <h1>{{username}}'s Product Details</h1>
-        </div>
-    </div>
-    <div style="margin-left:50px;">
-        <br><br><br><br>
-        <a id="button" href="{{url_for('.addProducts', username=username)}}" style="text-decoration:none;">Add a
-            Product</a>
-    </div>
-
-    <div style="margin-left:50px;">
-        <br>
-        <table>
-            <tr>
-                <td><label class="info head">Product ID</label></td>
-                <td><label class="info head">Product Name</label></td>
-                <td><label class="info head">Available Stock</label></td>
-                <td><label class="info head"></label></td>
-                <td><label class="info head">Add Stock</label></td>
-                <td><label class="info head"></label></td>
-                <td><label class="info head">Remove Stock</label></td>
-                <td><label class="info head">Delete Stock</label></td>
-            </tr>
-            {% for product in products %}
-            <tr>
-                <td><label class="info">{{product['PRODUCTID']}}</label></td>
-                <td><label class="info">{{product['PRODUCTNAME']}}</label></td>
-                <td><label class="info">{{product['AVAILABLESTOCK']}}</label></td>
-                <form method='POST'
-                            action="{{url_for('.editProduct', username=username, action='add', pid=product['PRODUCTID'])}}">
-                <td><label class="info">
-                        <input type="number" name="newstock" id="newstock" style="color:black;" required>
-                </label></td>
-                <td><label class="info">
-                        <input type="image" src="../static/add.png" width="40" height="40">
-                </label></td>
-                </form>
-                <form method='POST'
-                            action="{{url_for('.editProduct', username=username, action='remove', pid=product['PRODUCTID'])}}">
-                <td><label class="info">
-                        <input type="number" name="newstock" id="newstock" style="color:black;" required>
-                </label></td>
-                <td><label class="info">
-                        <input type="image" src="../static/remove.png" width="40" height="40">
-                </label></td>
-                </form>          
-                <td><label class="info">
-                        <a href="{{url_for('.deleteProduct', username=username, pid=product['PRODUCTID'])}}"
-                            style="text-decoration:none;"><img src="../static/delete.png" width="50" height="50"></a>
+    <h2 class="heading">{{username}}'s Product Details</h1>
+    <a class="addProd" id="button" href="{{url_for('.addProducts', username=username)}}">Add a Product</a>
+    <table class="productsTable">
+        <tr>
+            <td><label class="info head">Product ID</label></td>
+            <td><label class="info head">Product Name</label></td>
+            <td><label class="info head">Available Stock</label></td>
+            <td><label class="info head">To Add</label></td>
+            <td><label class="info head">Add Stock</label></td>
+            <td><label class="info head">To Remove</label></td>
+            <td><label class="info head">Remove Stock</label></td>
+            <td><label class="info head">Delete Stock</label></td>
+        </tr>
+        {% for product in products %}
+        <tr>
+            <td><label class="info">{{product['PRODUCTID']}}</label></td>
+            <td><label class="info">{{product['PRODUCTNAME']}}</label></td>
+            <td><label class="info">{{product['AVAILABLESTOCK']}}</label></td>
+            <form method="POST"
+                action="{{url_for('.editProduct', username=username, action='add', pid=product['PRODUCTID'])}}">
+                <td>
+                    <label class="info">
+                        <input type="number" name="newstock" id="newstock" required />
                     </label>
                 </td>
-            </tr>
-            {% endfor %}
-        </table>
-    </div>
+                <td>
+                    <label class="info">
+                        <input type="image" src="../static/add.png"/>
+                    </label>
+                </td>
+            </form>
+            <form method="POST"
+                action="{{url_for('.editProduct', username=username, action='remove', pid=product['PRODUCTID'])}}">
+                <td>
+                    <label class="info">
+                        <input type="number" name="newstock" id="newstock" required />
+                    </label>
+                </td>
+                <td>
+                    <label class="info">
+                        <input type="image" src="../static/minus.png"/>
+                    </label>
+                </td>
+            </form>
+            <td>
+                <label class="info">
+                    <a class="delProd" href="{{url_for('.deleteProduct', username=username, pid=product['PRODUCTID'])}}">
+                        <img src="../static/delete.png"/>
+                    </a>
+                </label>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
 </body>
 
 </html>

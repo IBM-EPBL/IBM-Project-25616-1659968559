@@ -33,7 +33,7 @@ def signin():
             session['id'] = user
             session['email'] = email
             return redirect(url_for('.dashboard', username=user))
-    return render_template('signin.html', title='Sign In', error=error)
+    return render_template('signin.html', error=error)
 
 
 @app.route("/signup", methods=('POST', 'GET'))
@@ -44,14 +44,15 @@ def signup():
         email = request.form['email']
         password = request.form['password']
 
-        checkUser = "SELECT * FROM users WHERE username = '{0}'".format(username)
+        checkUser = "SELECT * FROM users WHERE username = '{}'".format(username)
         stmt = ibm_db.exec_immediate(conn, checkUser)
         findUser = ibm_db.fetch_assoc(stmt)
         if findUser == False:
             sql = "INSERT INTO users (email, username, password) VALUES ('{}', '{}', '{}');".format(email, username, password)
             ibm_db.exec_immediate(conn, sql)
-            return render_template('home.html', title="Home", message="Registration Successful")
-    return render_template("signup.html", title="Sign Up", error=error)
+            return render_template('home.html', title="Home", isRegistered=True)
+        error="Username aldready exists."
+    return render_template("signup.html", error=error)
 
 
 @app.route("/<username>/dashboard", methods=('POST', 'GET'))

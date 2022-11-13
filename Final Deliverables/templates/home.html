@@ -4,6 +4,13 @@ Home
 {% endblock title %}
 
 {% block content %}
+{% if isRegistered %}
+<script>
+    window.onload=function(){
+        alert("Registration Successful!, Please Login");
+    }
+</script>
+{% endif %}
 <div class="grid_container">
     <div class="desc_container">
         <h1>ReStocker</h1>
@@ -12,7 +19,7 @@ Home
             too much on hand, by managing inventory, retailers meet customer demand without
             running out of stock or carrying excess supply
         </p>
-        <h4>New Here ? <button><a href="signup" style="text-decoration:none;">Sign Up</a></button></h4>
+        <h4>New Here ? <a href="signup"><button id="button">Sign Up</button></a></h4>
     </div>
     <div class="desc_image">
         <img src="../static/inventory.png">

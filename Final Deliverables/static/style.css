@@ -85,6 +85,7 @@
     background-color: transparent;
     border-radius: 20px;
     border-color:#3586ff;
+    cursor: pointer;
 }
 .desc_image{
     grid-area: desc_image;
