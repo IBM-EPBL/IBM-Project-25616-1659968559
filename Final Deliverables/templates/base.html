@@ -41,9 +41,15 @@
                 <li><a href="#"><i class="fa-brands fa-github"></i></a></li>
             </ul>
             <ul class="bottom_nav">
-                <li><a href="/">Home</a></li>
-                <li><a href="">About</a></li>
-                <li><a href="">Contact</a></li>
+                {% if success %}
+                    <li><a href="{{ url_for('.dashboard', username=username) }}">Dashboard</a></li>
+                    <li><a href="{{ url_for('.manageProducts', username=username) }}">Manage Products</a></li>
+                    <li><a href="{{ url_for('.logout') }}">Log Out</a></li>
+                {% else %}
+                    <li><a href="/">Home</a></li>
+                    <li><a href="signin">Sign In</a></li>
+                    <li><a href="signup">Sign Up</a></li>
+                {% endif %}
             </ul>
             <h3>Copyrights</h3>
             <ul class="owners">

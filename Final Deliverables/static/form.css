@@ -9,7 +9,7 @@ body{
     justify-content: center;
     align-items: center;
 }
-.sign_in,.sign_up{
+.form{
     padding:40px 65px;
     display: flex;
     flex-direction: column;
@@ -19,10 +19,10 @@ body{
     margin: 50px 0;
     background-color: rgba(53, 134, 255,0.2);
 }
-.sign_in h1,.sign_up h1{
+.form h1{
     margin-bottom:20px;
 }
-.sign_in h3,.sign_up h3{
+.form h3{
     margin:20px 0;
     opacity:0.9;
 }
@@ -47,11 +47,15 @@ body{
     border:0;
     margin-left:10px;
 }
-.sign_in #button,.sign_up #button{
+.form #button{
     padding:10px 20px;
     font-size: 14px;
     background-color: transparent;
     border-radius:20px;
     font-weight: 900;
     cursor: pointer;
+}
+.form #button:hover{
+    color: white;
+    background-color: black;
 }
