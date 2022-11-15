@@ -16,12 +16,12 @@
 
 <body>
     <form class="form" method="POST">
-        {% if error %}
-            <label style="color:red;">{{error}}</label>
-        {% endif %}
         <h1>Add a Product</h1>
         <h2>{{username}}</h2>
         <div class="form_input">
+            {% if error %}
+                <label style="color:red;">{{error}}</label>
+            {% endif %}
             <div class="form-element">
                 <label for="productid">Product ID</label>
                 <input type="text" name="pid" id="pid" placeholder="Enter Product ID" required>

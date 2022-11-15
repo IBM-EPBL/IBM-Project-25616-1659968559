@@ -12,6 +12,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../static/productsM.css">
+    {% if alertUser %}
+    <script>
+        window.onload=function(){
+            alert("Set Threshold Value on Dashboard before Adding a Product.");
+        }
+    </script>
+    {% endif %}
 </head>
 
 <body>

@@ -17,13 +17,19 @@ body{
     background-color: #3586ff;
 }
 .addProd{
-    width:200px;
+    width:150px;
     text-align: center;
     padding:10px 0px;
     text-decoration: none;
     color:#fff;
     background-color: #3586ff;
     border-radius:20px;
+    border-style: solid;
+}
+.addProd:hover{
+    color:#3586ff;
+    border-color: #3586ff;
+    background-color: white;
 }
 .productsTable{
     border-spacing: 5px;

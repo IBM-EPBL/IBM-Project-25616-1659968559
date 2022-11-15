@@ -1,5 +1,5 @@
 from app import app
-from flask import request, redirect, url_for, render_template, session
+from flask import request, redirect, url_for, render_template, session, json
 import ibm_db
 import os
 from sendGrid import mailto, checkstatus, getProductsBelowThValue
@@ -61,21 +61,31 @@ def dashboard(username):
     fetchPrices = "SELECT p.productname,up.unitprice,up.availablestock FROM products p,userproducts up WHERE p.productid=up.productid AND up.username='{}'".format(username)
     stmt = ibm_db.exec_immediate(conn, fetchPrices)
     productInfo = ibm_db.fetch_assoc(stmt)
-    products=[]
-    prices=[]
+    allproducts=[]
+    product=[]
+    price=[]
+    overallValue=0
     while productInfo != False:
-        products.append(productInfo['PRODUCTNAME'])
-        prices.append(productInfo['UNITPRICE'] * productInfo['AVAILABLESTOCK'])
+        allproducts.append(productInfo)
+        product.append(productInfo['PRODUCTNAME'])
+        price.append(productInfo['UNITPRICE']*productInfo['AVAILABLESTOCK'])
+        overallValue=overallValue+(productInfo['UNITPRICE']*productInfo['AVAILABLESTOCK'])
         productInfo = ibm_db.fetch_assoc(stmt)
     
-    productsBelowThValue = getProductsBelowThValue(conn, session['email'], username)
+    fetchPrices = "SELECT * FROM threshold_value WHERE email='{}';".format(session['email'])
+    stmt = ibm_db.exec_immediate(conn, fetchPrices)
+    productInfo = ibm_db.fetch_assoc(stmt)
+    if productInfo == False:
+        productsBelowThValue = []
+    else:
+        productsBelowThValue = getProductsBelowThValue(conn, session['email'], username)
 
     if request.method=='POST':
         th_value = request.form['threshold']
         sql = "INSERT INTO threshold_value (email, th_value) VALUES ('{}', '{}');".format(session['email'], th_value)
         ibm_db.exec_immediate(conn, sql)   
         return redirect(url_for('.dashboard', username=username))
-    return render_template("dashboard.html", username=username, success=True, overallValue=sum(prices), products=products, prices=prices, productsBelowThValue=productsBelowThValue)
+    return render_template("dashboard.html", username=username, success=True, products=allproducts, product=product, price=price, overallValue=overallValue, productsBelowThValue=productsBelowThValue)
 
 
 @app.route("/<username>/manageProducts", methods=('POST', 'GET'))
@@ -118,6 +128,12 @@ def deleteProduct(username, pid):
 @app.route("/<username>/addProduct", methods=('POST', 'GET'))
 def addProducts(username):
     error = None
+    isValueSet = "SELECT * FROM threshold_value WHERE email='{}';".format(session['email'])
+    statement = ibm_db.exec_immediate(conn, isValueSet)
+    isSet = ibm_db.fetch_assoc(statement)
+    if isSet == False:
+        return render_template("productsM.html", username=username, alertUser=True)
+
     if request.method == 'POST':
         pid = request.form['pid']
         pname = request.form['pname']

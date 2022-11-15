@@ -57,5 +57,4 @@ def getProductsBelowThValue(userDB, email, username):
                 prodList.append(prod_name)
             res = ibm_db.fetch_assoc(stmt)
 
-        print(prodList)
         return prodList

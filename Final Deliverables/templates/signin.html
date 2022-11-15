@@ -28,10 +28,10 @@
     <form class="form" method="POST">
         <h1>Good to see you !</h1>
         <h2>Welcome</h2>
-        {% if error %}
-            <label style="color:red;">{{error}}</label>
-        {% endif %}
         <div class="form_input">
+            {% if error %}    
+            <label style="color:red;">{{error}}</label><br>
+            {% endif %}
             <div class="form-element">
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" placeholder="Email" required>
