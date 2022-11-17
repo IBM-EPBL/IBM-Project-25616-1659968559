@@ -1,11 +1,12 @@
 from app import app
 from flask import request, redirect, url_for, render_template, session, json
 import ibm_db
-from sendGrid import mailto, checkstatus, getProductsBelowThValue
+import os
+from sendGrid import mailto, checkstatus, getProductsBelowThValufrom dotenv import load_dotenv
 
-
+load_dotenv('.env')
 #Connect to DB
-conn = ibm_db.connect("DATABASE=bludb;HOSTNAME=fbd88901-ebdb-4a4f-a32e-9822b9fb237b.c1ogj3sd0tgtu0lqde00.databases.appdomain.cloud;PORT=32731;SECURITY=SSL;SSLServerCertificate=DigiCertGlobalRootCA.crt;UID=glr36049;PWD=dcAymdrrrHG3zGIs;","", "")
+conn = ibm_db.connect("DB_CONN=DATABASE=bludb;HOSTNAME=fbd88901-ebdb-4a4f-a32e-9822b9fb237b.c1ogj3sd0tgtu0lqde00.databases.appdomain.cloud;PORT=32731;SECURITY=SSL;SSLServerCertificate=DigiCertGlobalRootCA.crt;UID=glr36049;PWD=dcAymdrrrHG3zGIs;","", "")
 
 @app.route("/")
 def root():

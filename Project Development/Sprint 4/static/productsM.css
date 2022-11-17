@@ -1,0 +1,67 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+}
+body{
+    display:flex;
+    flex-direction:column;
+    justify-content: space-around;
+}
+.heading{
+    text-align: center;
+    padding:20px 0px;
+    margin:40px 30vw;
+    border-radius: 10px;
+    color:#fff;
+    background-color: #3586ff;
+}
+.addProd{
+    width:150px;
+    text-align: center;
+    padding:10px 0px;
+    text-decoration: none;
+    color:#fff;
+    background-color: #3586ff;
+    border-radius:20px;
+    border-style: solid;
+}
+.addProd:hover{
+    color:#3586ff;
+    border-color: #3586ff;
+    background-color: white;
+}
+.productsTable{
+    border-spacing: 5px;
+    text-align: center;
+    margin-top:10px;
+    margin-bottom: 150px;
+}
+.productsTable td{
+    padding:10px 4px;
+}
+.productsTable tr:nth-child(1) td{
+    border-radius: 10px;
+    background-color: #3586ff;
+    color:#fff;
+    font-size: 18px;
+}
+.productsTable tr:not(:first-child) td{
+    border:2px solid #3586ff;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 16px;
+}
+.productsTable tr:not(:first-child) td input[type="number"]{
+    width:40%;
+    padding:10px 10px;
+    border-radius: 30px;
+}
+.productsTable tr:not(:first-child) td input[type="image"]{
+    height:40px;
+}
+
+.delProd img,.productsTable img{
+    height:45px;
+    aspect-ratio: 1;
+}

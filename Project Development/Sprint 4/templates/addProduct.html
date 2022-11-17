@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}
+    Add a Product
+{% endblock title %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/form.css">
+</head>
+
+<body>
+    <form class="form" method="POST">
+        <h1>Add a Product</h1>
+        <h2>{{username}}</h2>
+        <div class="form_input">
+            {% if error %}
+                <label style="color:red;">{{error}}</label>
+            {% endif %}
+            <div class="form-element">
+                <label for="productid">Product ID</label>
+                <input type="text" name="pid" id="pid" placeholder="Enter Product ID" required>
+            </div>
+            <div class="form-element">
+                <label for="productid">Product Name</label>
+                <input type="text" name="pname" id="pname" placeholder="Enter Product Name" required>
+            </div>
+            <div class="form-element">
+                <label for="productid">Stock Amount</label>
+                <input type="number" name="stock" id="stock" placeholder="Enter Stock Amount" required>
+            </div>
+            <div class="form-element">
+                <label for="productid">Price/Unit (in INR)</label>
+                <input type="number" name="unitprice" id="unitprice" placeholder="Enter Price per Unit" required>
+            </div>
+        </div>
+        <div class="btn_container">
+            <input type="reset" id="button" value="Reset">
+            <input type="submit" id="button" value="Add Product">
+        </div>
+    </form>
+</body>
+
+</html>
+{% endblock content %}
