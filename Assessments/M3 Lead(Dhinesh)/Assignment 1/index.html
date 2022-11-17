@@ -1,37 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
- <link rel="stylesheet" href="./style.css"
- {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: black;
-}
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration Form</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-  <div class="container">
-    <h1> User Registration Form: </h1>    
-    <hr>
-    <label for="Name"><b>Name</b></label>
-    <input type="text" placeholder="Enter your Name" name="Name" id="Name" required>
-    
-     <label for="Qualification"><b>Qualification</b></label>
-    <input type="text" placeholder="Enter your Qualification" name="Qualification" id="Qualification" required>
-    
-     <label for="Age"><b>Age</b></label>
-    <input type="text" placeholder="Enter your Age " name="Age" id="Age" required>
-
-    <label for="Email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email Id" name="Email" id="Email" required>
-    
-    </hr>
-    <button type="submit" class="registerbutn"> Submit </button>
-  </div>
-  
-
-
+    <div class="container">
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+                <button type="button" class="toggle-btn" onclick="login()">Log In</button>
+                <button type="button" class="toggle-btn" onclick="register()">Register</button>
+            </div>
+            <div id="login"class="input-group">
+                <input id="logName" type="text" class="input-field" placeholder="UserName" required>
+                <input type="password" class="input-field" placeholder="Password" required>
+                <!-- <input type="checkbox" class="check-box" required><span>Remember Me</span> -->
+                <button type="submit" class="submit-btn" onclick="userLog()">Log In</button>
+            </div>
+            <div id="register" class="input-group">
+                <input id ="regName" type="text" class="input-field" placeholder="UserName" required>
+                <input type="text" class="input-field" placeholder="Qualification" required>
+                <input type="number" class="input-field" placeholder="Age" required>
+                <input type="email" class="input-field" placeholder="Email" required>
+                <button type="submit" class="submit-btn" onclick="userReg()">Register</button>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
 </body>
 </html>
