@@ -6,7 +6,7 @@ def mailto(email, subject, content):
     message = Mail(from_email='sethuram@student.tce.edu', to_emails=email,
                    subject=subject, html_content='<strong> {} </strong>'.format(content))
     try:
-        sg = SendGridAPIClient("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")
+        sg = SendGridAPIClient("Enter your api key here")
         response = sg.send(message)
         print(response.status_code)
         print(response.body)
