@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block title %}
+Dashboard
+{% endblock title %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./static/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dashboard">
+    <h1 class="heading">{{username}}'s Dashboard</h1>
+    <div class="overall_inventory">
+        <h3>Overall Inventory Value<br>
+            Rs. {{overallValue}}
+        </h3>    
+    </div>
+    <div class="main_inventory">
+        <div class="prod_inventory">
+            <h3>Product-wise Inventory Value</h3>
+            <table>
+                <thead>
+                    <th>Product</th>
+                    <th>Total Value</th>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                    <tr>
+                        <td>{{product['PRODUCTNAME']}}</td>
+                        <td>{{product['UNITPRICE']*product['AVAILABLESTOCK']}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="chart_container">
+            <canvas id="pie-chart"></canvas>
+        </div>
+        <div class="thres_inventory">
+            <h3>Products Below Threshold Value</h3>
+            <table>
+                <thead>
+                    <th>Product</th>
+                </thead>
+                <tbody>
+                    {% for product in productsBelowThValue %}
+                    <tr>
+                        <td>{{product}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <h3>Set Threshold</h3>
+    <form class="thres_set" method="POST">
+        <input type="number" id="threshold" name="threshold" placeholder="0" required>
+        <input type="submit" value="Set Limit">
+    </form>
+    <script>
+        const randomColor =  () => Math.floor(Math.random()*16777215).toString(16);
+        const colors = [];
+
+        var labels=JSON.parse('{{product|tojson}}');
+        var data=JSON.parse('{{price|tojson}}');
+
+        for(let i = 0;i<labels.length;++i){
+            colors[i] = "#" + randomColor(); 
+        }
+
+        const ctx = document.getElementById('pie-chart');
+        const myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Products In Inventory',
+                    data: data,
+                    backgroundColor: colors,
+                }]
+            }
+        });
+    </script>
+</body>
+</html>
+
+{% endblock content %}

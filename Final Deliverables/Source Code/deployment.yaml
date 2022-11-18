@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: restocker-service
+spec:
+  selector: 
+    app: restocker
+  ports:
+  - port: 5000
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: restocker-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: restocker
+  template:
+    metadata:
+      labels:
+        app: restocker
+    spec:
+      containers:
+      - name: restocker
+        image: icr.io/ibmcr/restocker@sha256:cc14024365de9d07f408062bb0e8b779bc265c0024b345fa5e5b369325400a14
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000

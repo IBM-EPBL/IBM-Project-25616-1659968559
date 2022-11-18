@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <script src="https://kit.fontawesome.com/aff88e4fcf.js" crossorigin="anonymous"></script>
+</head>
+<body>
+        <div class="nav_container">
+            <h2 style="color:#fff" class="logo">ReStocker</h2>
+            <nav class="navigation">
+                <ul>
+                {% if success %}
+                    <li><a href="{{ url_for('.dashboard', username=username) }}">Dashboard</a></li>
+                    <li><a href="{{ url_for('.manageProducts', username=username) }}">Manage Products</a></li>
+                    <li><a href="{{ url_for('.logout') }}">Log Out</a></li>
+                {% else %}
+                    <li><a href="/">Home</a></li>
+                    <li><a href="signin">Sign In</a></li>
+                    <li><a href="signup">Sign Up</a></li>
+                {% endif %}
+                </ul>
+            </nav>
+        </div>
+        {% block content %}
+        {% endblock content %}
+        <div class="contact">
+            <div class="waves">
+                <div class="wave" id="wave1"></div>
+                <div class="wave" id="wave2"></div>
+                <div class="wave" id="wave3"></div>
+                <div class="wave" id="wave4"></div>
+            </div>
+            <ul class="social_icon">
+                <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-github"></i></a></li>
+            </ul>
+            <ul class="bottom_nav">
+                {% if success %}
+                    <li><a href="{{ url_for('.dashboard', username=username) }}">Dashboard</a></li>
+                    <li><a href="{{ url_for('.manageProducts', username=username) }}">Manage Products</a></li>
+                    <li><a href="{{ url_for('.logout') }}">Log Out</a></li>
+                {% else %}
+                    <li><a href="/">Home</a></li>
+                    <li><a href="signin">Sign In</a></li>
+                    <li><a href="signup">Sign Up</a></li>
+                {% endif %}
+            </ul>
+            <h3>Copyrights</h3>
+            <ul class="owners">
+                <li>Venkatesha Prabhu</li>
+                <li>Sethuram</li>
+                <li>Sivaraman</li>
+                <li>Dhinesh</li>
+            </ul>
+        </div>
+</body>
+</html>

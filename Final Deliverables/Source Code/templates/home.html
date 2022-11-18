@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}
+Home
+{% endblock title %}
+
+{% block content %}
+{% if isRegistered %}
+<script>
+    window.onload=function(){
+        alert("Registration Successful!, Please Login");
+    }
+</script>
+{% endif %}
+<div class="grid_container">
+    <div class="desc_container">
+        <h1>ReStocker</h1>
+        <p>
+            We ensure you carry merchandise that shoppers want, with neither too little nor
+            too much on hand, by managing inventory, retailers meet customer demand without
+            running out of stock or carrying excess supply
+        </p>
+        <h4>New Here ? <a href="signup"><button id="button">Sign Up</button></a></h4>
+    </div>
+    <div class="desc_image">
+        <img src="../static/inventory.png">
+    </div>
+    <div class="about_image">
+        <img src="../static/inventory2.png">
+    </div>
+    <div class="about_container">
+        <h2>About</h2>
+        <p>
+            Effective retail inventory management results in lower costs and a
+            better understanding of sales patterns. Retail inventory management
+            tools and methods give retailers more information on which to run their businesses.
+            Applications have been developed to help retailers track and manage stocks related
+            to their own products
+        </p>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,216 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+.grid_container{
+    display:grid;
+    grid-template-areas: 
+    'nav nav nav'
+    'desc desc desc_image'
+    'about_image about about'
+    'contact contact contact';
+    grid-template-columns: repeat(3,minmax(1fr,2fr));
+    background-color: rgba(53, 134, 255,0.1);
+}
+.nav_container{
+    grid-area:nav;
+    position:relative;
+    top:0;
+    width:100%;
+    height:12vh;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3586ff;
+}
+.nav_container .logo{
+    margin-left:80px;
+}
+.nav_container .navigation ul{
+    display:flex;
+    justify-content: space-between;
+}
+.nav_container .navigation ul li{
+    margin:0 20px;
+    list-style-type:none;
+}
+.nav_container .navigation ul li a{
+    text-decoration: none;
+    padding:10px 20px;
+    font-size:18px;
+    color:#fff;
+    font-weight: bold;
+}
+.nav_container .navigation ul .active{
+    border-radius:20px;
+}
+.nav_container .sign_in_up_container{
+    margin-right:4%;
+}
+.nav_container .sign_in_up_container button{
+    padding:10px 25px;
+    margin:0 10px;
+    font-size:15px;
+    background-color: transparent;
+    border-radius: 20px;
+    color:#fff;
+    border-color: #fff;
+}
+.desc_container{
+    grid-area:desc;
+    height:88vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding:0 50px;
+}
+.desc_container h1{
+    font-size:50px;
+    font-weight: bold;
+    margin-bottom:10px;
+}
+.desc_container p{
+    font-size:20px;
+    margin-bottom:20px;
+}
+.desc_container h4{
+    font-size:18px;
+    font-weight: bolder;
+}
+.desc_container button{
+    padding:10px 25px;
+    margin:0 10px;
+    font-size:15px;
+    background-color: transparent;
+    border-radius: 20px;
+    border-color:#3586ff;
+    cursor: pointer;
+}
+.desc_image{
+    grid-area: desc_image;
+    display: flex;
+    align-items: center;
+}
+.desc_image img{
+    min-width: 400px;
+    min-height: 350px;
+}
+.about_image{
+    grid-area:about_image;
+    position: relative;
+    display: flex;
+}
+.about_image img{
+    max-height:350px;
+    position: relative;
+    top:-80px;
+}
+.about_container{
+    grid-area:about;
+    height:70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding:0 50px;
+}
+.about_container h2{
+    font-size:40px;
+    text-align: center;
+    margin-bottom:10px;
+}
+.about_container p{
+    font-size: 20px;
+    text-align: center;
+}
+.contact{
+    grid-area:contact;
+    position: relative;
+    width:100%;
+    min-height:200px;
+    background-color: #3586ff;
+}
+.contact ul{
+    display:flex;
+    justify-content: center;
+    margin:20px 0;
+}
+.contact ul li{
+    padding:0 20px;
+    list-style-type: none;
+    color:#fff;
+}
+.contact ul li a{
+    text-decoration: none;
+    color:#fff;
+    display:inline-block;
+    transition: 0.5s;
+}
+.contact .social_icon li a{
+    font-size:32px;
+}
+.contact .social_icon li a:hover{
+    transform: translateY(-10px);
+}
+.contact .bottom_nav li a{
+    font-size:18px;
+}
+.contact h3{
+    color:#fff;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top:30px;
+    margin-bottom:-10px;
+}
+.contact .owners li{
+    font-size:16px;
+}
+.wave{
+    width:100%;
+    height:100px;
+    position:absolute;
+    top:-100px;
+    left:0;
+    background:url(wave.png);
+    background-size: 1000px 100px;
+}
+.wave#wave1{
+    z-index:1000;
+    opacity:1;
+    bottom:0;
+    animation:animatewave 4s linear infinite;
+}
+.wave#wave2{
+    z-index:999;
+    opacity:0.5;
+    bottom:10px;
+    animation:animatewave_2 4s linear infinite;
+}
+.wave#wave3{
+    z-index:1000;
+    opacity:0.2;
+    bottom:15px;
+    animation:animatewave 3s linear infinite;
+}
+.wave#wave4{
+    z-index:999;
+    opacity:0.7;
+    bottom:20px;
+    animation:animatewave_2 3s linear infinite;
+}
+@keyframes animatewave {
+    0%{
+        background-position-x: 1000px;
+    }
+    100%{
+        background-position-x: 0px;
+    }
+}
+@keyframes animatewave_2 {
+    0%{
+        background-position-x: 0px;
+    }
+    100%{
+        background-position-x: 1000px;
+    }
+}
